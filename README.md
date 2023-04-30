@@ -90,7 +90,7 @@ according to my needs.
 * Install Homebrew and utilities,
   ```bash
   $ > /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  $ > brew install bash jq wget podman htop
+  $ > brew install bash jq wget podman htop gpg2 gnupg pinentry-mac git
   ```
 
 * Replace default **/bin/bash** with bash installed from homebrew,
@@ -126,6 +126,15 @@ according to my needs.
   podman machine start
   EOF
   $ > osascript -e 'tell application "System Events" to make login item at end with properties {path:"/usr/local/bin/podman-machine-start.sh", hidden:false}'
+  $ > cp ./opt/homebrew/Cellar/git/*/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
+ 
+  # Set up gpg key
+  $ > echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+  $ > echo 'use-agent' > ~/.gnupg/gpg.conf
+  $ > gpg --full-gen-key (RSA/4096)
+  $ > sed -i '' -e "s/signingkey =.*/signingkey = $(gpg -K --keyid-format SHORT | grep rsa4096/ | cut -d / -f2 | awk '{print $1}')/" ~/dotfiles/.gitconfig
+
+ 
 ```  
   
 Profit.
