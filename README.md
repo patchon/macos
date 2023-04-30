@@ -134,9 +134,7 @@ according to my needs.
   $ > echo 'use-agent' > ~/.gnupg/gpg.conf
   $ > gpg --full-gen-key (RSA/4096)
   $ > sed -i '' -e "s/signingkey =.*/signingkey = $(gpg -K --keyid-format SHORT | grep rsa4096/ | cut -d / -f2 | awk '{print $1}')/" ~/dotfiles/.gitconfig
-
- 
-```  
+  ```  
   
 Profit.
 ¯\_(ツ)_/¯
