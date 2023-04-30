@@ -116,11 +116,11 @@ according to my needs.
   
 * Install / configure random things,
   ```
-  $ > chsh -s /opt/homebrew/bin/bash
+  $ > chsh -s /bin/bash
   $ > curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-mac-arm64.tar.gz -o /tmp/oc.tar.gz
   $ > sudo mkdir /usr/local/bin && sudo chown $USER /usr/local/bin
   $ > tar zxvfp /tmp/oc.tar.gz -C /usr/local/bin/ && rm -f /usr/local/bin/README.md
-  $ > podman machine rm && podman machine init
+  $ > podman machine rm ; podman machine init
   $ > cat <<EOF > /usr/local/bin/podman-machine-start.sh
   #!/bin/bash
   podman machine start
