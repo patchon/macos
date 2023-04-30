@@ -128,6 +128,9 @@ according to my needs.
   $ > chmod +x /usr/local/bin/podman-machine-start.sh
   $ > osascript -e 'tell application "System Events" to make login item at end with properties {path:"/usr/local/bin/podman-machine-start.sh", hidden:false}'
   $ > cp ./opt/homebrew/Cellar/git/*/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
+  $ > curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64' -o /tmp/vscode.zip
+  $ > unzip /tmp/vscode.zip
+  $ > mv Visual\ Studio\ Code.app/ /Applications/
  
   # Set up gpg key
   $ > echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
