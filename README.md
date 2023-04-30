@@ -125,6 +125,7 @@ according to my needs.
   #!/bin/bash
   podman machine start
   EOF
+  $ > chmod +x /usr/local/bin/podman-machine-start.sh
   $ > osascript -e 'tell application "System Events" to make login item at end with properties {path:"/usr/local/bin/podman-machine-start.sh", hidden:false}'
   $ > cp ./opt/homebrew/Cellar/git/*/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/
  
