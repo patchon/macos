@@ -87,23 +87,46 @@ according to my needs.
   > **Note**<br>
   Also, disable the default "Shortcut 2" from the AltTab application, since it is binded on the "pipe" (<) button.
 
-* Install Homebrew,
+* Install Homebrew and utilities,
   ```bash
   $ > /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  $ > brew install bash jq wget podman htop
+  ```
+
+* Replace default **/bin/bash** with bash installed from homebrew,
+  * Reboot into recovery mode by turning the macbook off, and hold the powerbutton while starting it again
+  * Select the **Terminal** from the menu **Utilities**
+  ```bash
+  # Disable csr, 
+  $ > csrutil disable
+  $ > shutdown -h now 
+  
+  # Mount volume, 
+  $ > diskutil list 
+  $ > diskutil apfs unlockVolume disk3s1
+  $ > diskutil mount disk3s1 
+  $ > mount -u -o rw /Volumes/Macintosh\ HD
+  $ > cd /Volumes/Macintosh\ HD/bin
+  $ > mv bash bash_macos && ln -s ../opt/homebrew/bin/bash .
+  
+  # Enable csr
+  $ > csrutil disable
+  $ > reboot
   ```
   
 * Install / configure random things,
   ```
-  $ > brew install bash jq wget podman
-  $ > echo "/opt/homebrew/bin/bash" >> /etc/shells
   $ > chsh -s /opt/homebrew/bin/bash
   $ > curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-mac-arm64.tar.gz -o /tmp/oc.tar.gz
   $ > sudo mkdir /usr/local/bin && sudo chown $USER /usr/local/bin
   $ > tar zxvfp /tmp/oc.tar.gz -C /usr/local/bin/ && rm -f /usr/local/bin/README.md
-  $ > 
-  
-  
+  $ > podman machine rm && podman machine init
+  $ > cat <<EOF > /usr/local/bin/podman-machine-start.sh
+  #!/bin/bash
+  podman machine start
+  EOF
+  $ > osascript -e 'tell application "System Events" to make login item at end with properties {path:"/usr/local/bin/podman-machine-start.sh", hidden:false}'
+```  
   
 Profit.
-
 ¯\_(ツ)_/¯
