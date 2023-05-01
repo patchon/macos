@@ -117,6 +117,12 @@ according to my needs.
 * Install / configure random things,
   ```
   $ > chsh -s /bin/bash
+  $ > cd ${HOME} && mkdir .cache
+  $ > git clone git@github.com:patchon/dotfiles.git
+  $ > ln -s dotfiles/.vimrc .
+  $ > ln -s dotfiles/.vim .
+  $ > ln -s dotfiles/.bashrc .
+  $ > ln -s dotfiles/.gitconfig .
   $ > curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-mac-arm64.tar.gz -o /tmp/oc.tar.gz
   $ > sudo mkdir /usr/local/bin && sudo chown $USER /usr/local/bin
   $ > tar zxvfp /tmp/oc.tar.gz -C /usr/local/bin/ && rm -f /usr/local/bin/README.md
