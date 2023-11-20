@@ -81,8 +81,8 @@ according to my needs.
   * Select keyboard layout from **System Preferences** -> **Keyboard** -> **Input Sources** (under Others).
 
   ```bash
-  $ > curl https://raw.githubusercontent.com/patchon/macos/raw/master/Swedish-SFZ.keylayout -o /Library/Keyboard\ Layouts/Swedish-SFZ.keylayout
-  $ > curl https://github.com/patchon/macos/raw/master/Swedish-SFZ.icns -o /Library/Keyboard\ Layouts/Swedish-SFZ.keylayout
+  $ > curl https://raw.githubusercontent.com/patchon/macos/master/Swedish-SFZ.keylayout -o /Library/Keyboard\ Layouts/Swedish-SFZ.keylayout
+  $ > curl https://raw.githubusercontent.com/patchon/macos/master/Swedish-SFZ.icns -o /Library/Keyboard\ Layouts/Swedish-SFZ.icns
   ```
   > **Note**<br>
   Also, disable the default "Shortcut 2" from the AltTab application, since it is binded on the "pipe" (<) button.
