@@ -142,7 +142,9 @@ according to my needs.
   $ > echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
   $ > echo 'use-agent' > ~/.gnupg/gpg.conf
   $ > gpg --full-gen-key (RSA/4096)
-  $ > sed -i '' -e "s/signingkey =.*/signingkey = $(gpg -K --keyid-format SHORT | grep rsa4096/ | cut -d / -f2 | awk '{print $1}')/" ~/dotfiles/.gitconfig
+  $ > KEY_ID=$(gpg --list-secret-keys --keyid-format=long | grep ssb | cut -d / -f2 | cut -d " " -f1)
+  $ > sed -i '' -e "s/signingkey =.*/signingkey = $KEY_ID/" ~/dotfiles/.gitconfig
+  $ > gpg --armor --export $KEY_ID
   ```  
   
 Profit.
